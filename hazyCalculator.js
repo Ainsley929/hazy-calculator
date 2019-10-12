@@ -3,16 +3,17 @@ function isSkippedValue(value) {
 }
 
 function isNumericValue(value) {
-  return !isNaN(value)
+  return !isNaN(value) && value != ''
 }
 
 function isNothingValue(value) {
-  return value === null
+  return value === null || value === undefined
 }
 
 function isAcceptableValue(value) {
   const operators = ['+', '-', '*', '/']
-  return typeof value === Number || operators.includes(value)
+  const type = typeof Number(value)
+  return type === 'number' || operators.includes(value)
 }
 
 function performCalculationStep(firstOperand, operator, secondOperand) {
